@@ -1,0 +1,2343 @@
+{
+  "generatedFrom": {
+    "curriculum": "content/source/Curriculum.md",
+    "lessonPlan": "content/source/Lesson plan and log.md"
+  },
+  "title": "AI Curriculum — One-Year Plan",
+  "canonicalUrl": "",
+  "totals": {
+    "activeWeeks": 49,
+    "bufferWeeks": 3,
+    "hoursPerWeek": 6,
+    "plannedHours": 294
+  },
+  "depthMap": [
+    {
+      "depth": "built",
+      "meaning": "You have coded it once and can derive it closed-book",
+      "areas": "Reverse-mode AD; attention and the transformer block; the training loop"
+    },
+    {
+      "depth": "derived",
+      "meaning": "Closed-book derivation; you read, not write, the code",
+      "areas": "Losses from maximum likelihood; generalization and regularization; the ELBO; MDPs and the policy gradient with baseline; DPO; the GRPO estimator; scaling laws; memory, FLOP, and dollar cost of training and serving"
+    },
+    {
+      "depth": "lecture",
+      "meaning": "One lecture and one paper; you can explain the mechanism and the trade-off, not reproduce it",
+      "areas": "CNNs and residual networks; diffusion (derivation followed, not reproduced); contrastive and multimodal models; tokenization and decoding strategies; attention alternatives and state-space models; parallelism schemes; FlashAttention; MoE; speculative decoding; PPO; alignment and safety landscape; the practitioner stack (LoRA and QLoRA, quantization formats, serving stacks, model merging, RAG pipeline components, LLM security)"
+    },
+    {
+      "depth": "left-out",
+      "meaning": "Named so the gap is known",
+      "areas": "Kernel programming; distributed-training internals; GANs and flows; classical ML beyond a fast pass; deep RL beyond policy gradients; mechanistic interpretability; formal verification; a research contribution"
+    }
+  ],
+  "judgmentQuestions": [
+    "contamination",
+    "baseline strength",
+    "matched budgets",
+    "seed variance",
+    "judge reliability",
+    "construct validity"
+  ],
+  "levelScale": {
+    "1": "can explain with assistance",
+    "2": "solves a familiar problem alone",
+    "3": "transfers to an unfamiliar case and states the limits",
+    "4": "defends an original analysis under critique",
+    "U": "unassessed"
+  },
+  "competencyRule": "A level is set only from a closed-book answer or an audited artifact, never from completing a resource; one competency per phase is retested 4–6 weeks later.",
+  "phases": [
+    {
+      "id": "P",
+      "name": "CS primer",
+      "weeks": [
+        "P1",
+        "P5"
+      ],
+      "hours": 30,
+      "exitCondition": "Gate P: P3 and P5 exercises redone closed-book",
+      "checkpoints": []
+    },
+    {
+      "id": 0,
+      "name": "Phase 0: Foundation",
+      "weeks": [
+        "1",
+        "4"
+      ],
+      "hours": 24,
+      "exitCondition": "backpropagation built once by hand at toy scale; a 500-line PyTorch training script read and explained line by line; FLOP and memory arithmetic for a model done on paper; the six judgment questions in use.",
+      "checkpoints": [
+        {
+          "id": "cp-0-1",
+          "phase": 0,
+          "text": "micrograd with gradient check"
+        },
+        {
+          "id": "cp-0-2",
+          "phase": 0,
+          "text": "Backprop-as-reverse-mode-AD derivation, one page"
+        },
+        {
+          "id": "cp-0-3",
+          "phase": 0,
+          "text": "nanochat training script annotated"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Phase 1: Deep learning core",
+      "weeks": [
+        "5",
+        "17"
+      ],
+      "hours": 78,
+      "exitCondition": "a small GPT coded along once; the ELBO and the policy gradient derived closed-book; CNNs, diffusion, and RL understood at lecture level; a 2017–2022 architecture paper's ablation table predictable before reading it.",
+      "checkpoints": [
+        {
+          "id": "cp-1-1",
+          "phase": 1,
+          "text": "Toy GPT coded along, trained on a small corpus"
+        },
+        {
+          "id": "cp-1-2",
+          "phase": 1,
+          "text": "Three closed-book derivations"
+        },
+        {
+          "id": "cp-1-3",
+          "phase": 1,
+          "text": "ResNet notebook run with a one-page analysis"
+        },
+        {
+          "id": "cp-1-4",
+          "phase": 1,
+          "text": "Fifteen paper notes"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Phase 2: Language models and systems",
+      "weeks": [
+        "18",
+        "27"
+      ],
+      "hours": 60,
+      "exitCondition": "you can account on paper for every FLOP, byte, and dollar in a training run described in a technical report, and explain every architecture choice in a current open-weight model.",
+      "checkpoints": [
+        {
+          "id": "cp-2-1",
+          "phase": 2,
+          "text": "nanochat model and tokenizer files annotated"
+        },
+        {
+          "id": "cp-2-2",
+          "phase": 2,
+          "text": "Technical-report audit of DeepSeek-V4 with reported, derived, and unknown separated"
+        },
+        {
+          "id": "cp-2-3",
+          "phase": 2,
+          "text": "Training-step cost derivation, closed-book"
+        },
+        {
+          "id": "cp-2-4",
+          "phase": 2,
+          "text": "Benchmark critique"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Phase 3: Post-training, practitioner stack, reasoning, agents, evaluation",
+      "weeks": [
+        "28",
+        "40"
+      ],
+      "hours": 78,
+      "exitCondition": "DPO and the GRPO estimator derived closed-book; Raschka's GRPO notebook run and interpreted; one three-way agent comparison designed, run, written up, and threat-modelled; a system card followed back to its methods; and you can say what a team of yours would do to fine-tune, quantize, serve, and secure a model, and what each choice costs.",
+      "checkpoints": [
+        {
+          "id": "cp-3-1",
+          "phase": 3,
+          "text": "Two closed-book derivations: DPO, GRPO estimator"
+        },
+        {
+          "id": "cp-3-2",
+          "phase": 3,
+          "text": "Practitioner artifacts: Unsloth SFT run and GGUF quantization run, each with a half-page of what changed and what it cost; LoRA and quantization memory arithmetic by hand"
+        },
+        {
+          "id": "cp-3-3",
+          "phase": 3,
+          "text": "GRPO notebook run with a write-up of the reward curve and pass@k"
+        },
+        {
+          "id": "cp-3-4",
+          "phase": 3,
+          "text": "Three-way agent comparison with Inspect eval, reliability memo, and OWASP threat model"
+        },
+        {
+          "id": "cp-3-5",
+          "phase": 3,
+          "text": "RLVR-capability note and system-card note"
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "name": "Capstone",
+      "weeks": [
+        "41",
+        "44"
+      ],
+      "hours": 24,
+      "exitCondition": "One bounded investigation inside what Phases 1–3 covered, run by an agent to your specification and audited by you, defended orally. The capstone demonstrates method, not a research result. An analytical capstone (a technical-report audit or a cost-and-decision analysis with a small simulation) is equally acceptable and fits a founder's use better than a training run.",
+      "checkpoints": [
+        {
+          "id": "cp-c-1",
+          "phase": "C",
+          "text": "Protocol and write-up"
+        },
+        {
+          "id": "cp-c-2",
+          "phase": "C",
+          "text": "Audit log of the agent's runs"
+        },
+        {
+          "id": "cp-c-3",
+          "phase": "C",
+          "text": "Oral defence completed; retest results recorded"
+        }
+      ]
+    }
+  ],
+  "weeks": [
+    {
+      "id": "P1",
+      "order": 0,
+      "phase": "P",
+      "lecture": "Programming 1: variables, control flow, functions, strings, lists, dictionaries",
+      "reading": "CS50P lectures 0–3; Think Python as reference",
+      "exercise": "Five small programs without an agent: prime sieve, word count, a recursive function, a dictionary lookup, a file read",
+      "hours": 6,
+      "depth": "lecture",
+      "resources": [
+        "cs50p",
+        "think-python"
+      ],
+      "papers": [],
+      "hash": "9579d6e71369"
+    },
+    {
+      "id": "P2",
+      "order": 1,
+      "phase": "P",
+      "lecture": "Programming 2 and numerical Python: classes, mutability, generators; arrays, shapes, broadcasting",
+      "reading": "CS50P lectures 4–8 (selected); NumPy quickstart; From Python to NumPy ch. 1–2",
+      "exercise": "Matrix class with operator overloading; matmul three ways, timed, ratio explained",
+      "hours": 6,
+      "depth": "lecture",
+      "resources": [
+        "cs50p",
+        "numpy-quickstart",
+        "from-python-to-numpy"
+      ],
+      "papers": [],
+      "hash": "7b3ad9aee244"
+    },
+    {
+      "id": "P3",
+      "order": 2,
+      "phase": "P",
+      "lecture": "Machine arithmetic and memory hierarchy: IEEE 754, bf16/fp16/fp8, cancellation; caches, bandwidth vs latency; what a GPU is",
+      "reading": "CS:APP 2.1–2.4, 6.1–6.4; Goldberg 1991 §1–2; GPU MODE lecture 4",
+      "exercise": "Why 0.1 + 0.2 ≠ 0.3; derive log-sum-exp; bf16 vs fp16; 4096² fp16 matmul time from FLOP/s and bandwidth",
+      "hours": 6,
+      "depth": "lecture",
+      "resources": [
+        "csapp",
+        "goldberg-1991",
+        "gpu-mode"
+      ],
+      "papers": [],
+      "hash": "c1948732258b"
+    },
+    {
+      "id": "P4",
+      "order": 3,
+      "phase": "P",
+      "lecture": "Algorithms and tooling: asymptotics, hash tables, graphs, topological sort; shell, git, environments, Jupyter, HTTP, JSON",
+      "reading": "Roughgarden Part 1 ch. 1–2 and graph search; Missing Semester 1, 2, 6; MDN HTTP overview",
+      "exercise": "Complexity of attention in sequence length; topologically sort a computation graph by hand; clone nanochat, run its tests, trace one stack trace",
+      "hours": 6,
+      "depth": "lecture",
+      "resources": [
+        "roughgarden",
+        "missing-semester",
+        "mdn-http",
+        "nanochat"
+      ],
+      "papers": [],
+      "hash": "3709e378e85b"
+    },
+    {
+      "id": "P5",
+      "order": 4,
+      "phase": "P",
+      "lecture": "Information theory: entropy, cross-entropy, KL, mutual information, source coding",
+      "reading": "MacKay ch. 1, 2, 4",
+      "exercise": "Cross-entropy as code length; perplexity as exp(entropy rate); tokenizer as compressor. Gate P: P3 and P5 redone closed-book",
+      "hours": 6,
+      "gate": "Gate P",
+      "depth": "lecture",
+      "resources": [
+        "mackay"
+      ],
+      "papers": [],
+      "hash": "a4877ddf4ba4"
+    },
+    {
+      "id": "1",
+      "order": 5,
+      "phase": 0,
+      "lecture": "Closed-book diagnostic (items in the Curriculum tab); Karpathy micrograd video, coded along, part 1",
+      "reading": "",
+      "exercise": "Ridge and cross-entropy gradients; error log; Value class with backward",
+      "hours": 6,
+      "depth": "built",
+      "resources": [
+        "karpathy-zero-to-hero"
+      ],
+      "papers": [],
+      "hash": "2e746bb7831a"
+    },
+    {
+      "id": "2",
+      "order": 6,
+      "phase": 0,
+      "lecture": "micrograd finished; makemore part 1 watched",
+      "reading": "",
+      "exercise": "Gradient check against finite differences; one-page backprop-as-reverse-mode-AD derivation",
+      "hours": 6,
+      "depth": "built",
+      "resources": [
+        "karpathy-zero-to-hero"
+      ],
+      "papers": [],
+      "hash": "e87a782c2552"
+    },
+    {
+      "id": "3",
+      "order": 7,
+      "phase": 0,
+      "lecture": "PyTorch blitz; CS336 lectures: PyTorch and einops; GPUs and TPUs",
+      "reading": "Scaling book, rooflines chapter",
+      "exercise": "micrograd's MLP in PyTorch, loss curve matched; roofline for one GPU",
+      "hours": 6,
+      "depth": "built",
+      "resources": [
+        "karpathy-zero-to-hero",
+        "pytorch-blitz",
+        "cs336",
+        "scaling-book"
+      ],
+      "papers": [],
+      "hash": "fef98dc868d2"
+    },
+    {
+      "id": "4",
+      "order": 8,
+      "phase": 0,
+      "lecture": "Experimental judgment: leakage, baselines, judges, contamination",
+      "reading": "Kapoor and Narayanan 2023; Zheng et al. 2023; one contamination analysis",
+      "exercise": "Specify a paired comparison with uncertainty; one temporal-leakage case from quant work; annotate nanochat's training script. Pace review. Gate 0",
+      "hours": 6,
+      "gate": "Gate 0",
+      "depth": "lecture",
+      "resources": [
+        "nanochat"
+      ],
+      "papers": [
+        "kapoor-and-narayanan",
+        "zheng-et-al"
+      ],
+      "hash": "e90914509b5a"
+    },
+    {
+      "id": "5",
+      "order": 9,
+      "phase": 1,
+      "lecture": "Prince ch. 3–5: shallow and deep networks, loss functions",
+      "reading": "",
+      "exercise": "Derive MSE and cross-entropy from maximum likelihood; universal-approximation sketch",
+      "hours": 6,
+      "depth": "derived",
+      "resources": [
+        "prince-udl"
+      ],
+      "papers": [],
+      "hash": "3a148247b071"
+    },
+    {
+      "id": "6",
+      "order": 10,
+      "phase": 1,
+      "lecture": "Prince ch. 6–7: fitting, gradients, initialization",
+      "reading": "Adam 2014",
+      "exercise": "Adam's invariance in its precise form; backprop through a two-layer network; variance-preserving init",
+      "hours": 6,
+      "depth": "derived",
+      "resources": [
+        "prince-udl"
+      ],
+      "papers": [
+        "adam"
+      ],
+      "hash": "865602b8a5bd"
+    },
+    {
+      "id": "7",
+      "order": 11,
+      "phase": 1,
+      "lecture": "Prince ch. 8–9: performance, regularization",
+      "reading": "Nakkiran 2019; Power 2022; Dropout 2014",
+      "exercise": "Paper notes with the six judgment questions; one page on SGD's implicit regularization",
+      "hours": 6,
+      "depth": "derived",
+      "resources": [
+        "prince-udl"
+      ],
+      "papers": [
+        "deep-double-descent",
+        "grokking",
+        "dropout"
+      ],
+      "hash": "e9e6f75e5c20"
+    },
+    {
+      "id": "8",
+      "order": 12,
+      "phase": 1,
+      "lecture": "Prince ch. 10–11: convolutions, residuals",
+      "reading": "ResNet 2015; Batch Normalization 2015",
+      "exercise": "Run a CIFAR-10 ResNet notebook; vary depth; write up the curves",
+      "hours": 6,
+      "depth": "lecture",
+      "resources": [
+        "prince-udl"
+      ],
+      "papers": [
+        "resnet",
+        "batch-normalization",
+        "alexnet"
+      ],
+      "hash": "bf51915c28c6"
+    },
+    {
+      "id": "9",
+      "order": 13,
+      "phase": 1,
+      "lecture": "Prince ch. 12: transformers",
+      "reading": "Attention Is All You Need 2017; Layer Normalization 2016; Alammar, Illustrated Word2Vec, and colah, Understanding LSTMs (one hour: what attention replaced)",
+      "exercise": "Attention FLOPs and memory vs sequence length; causal mask by hand",
+      "hours": 6,
+      "depth": "built",
+      "resources": [
+        "prince-udl",
+        "alammar-word2vec",
+        "colah-lstm"
+      ],
+      "papers": [
+        "attention-is-all-you-need",
+        "layer-normalization"
+      ],
+      "hash": "e83868b62bd4"
+    },
+    {
+      "id": "10",
+      "order": 14,
+      "phase": 1,
+      "lecture": "Karpathy GPT video, part 1, coded along",
+      "reading": "",
+      "exercise": "Shapes at each step; one page on why each component exists",
+      "hours": 6,
+      "depth": "built",
+      "resources": [
+        "karpathy-zero-to-hero"
+      ],
+      "papers": [],
+      "hash": "bfd51d9fed8a"
+    },
+    {
+      "id": "11",
+      "order": 15,
+      "phase": 1,
+      "lecture": "Karpathy GPT video, part 2; nanochat model file side by side",
+      "reading": "GPT-2 2019; BERT 2018 and ViT 2020 as notes; Labonne, Decoding Strategies in LLMs; Bycroft's LLM visualization",
+      "exercise": "Toy GPT trained on a small corpus; list where nanochat differs (RoPE, RMSNorm, SwiGLU) and why",
+      "hours": 6,
+      "depth": "built",
+      "resources": [
+        "karpathy-zero-to-hero",
+        "nanochat",
+        "llm-course",
+        "labonne-decoding",
+        "bycroft-llm-viz"
+      ],
+      "papers": [
+        "gpt-2",
+        "bert",
+        "vit"
+      ],
+      "hash": "4748dbf96ca0"
+    },
+    {
+      "id": "12",
+      "order": 16,
+      "phase": 1,
+      "lecture": "Prince ch. 14, 17: unsupervised learning, VAEs",
+      "reading": "Kingma and Welling 2013",
+      "exercise": "Derive the ELBO before reading the derivation",
+      "hours": 6,
+      "depth": "derived",
+      "resources": [
+        "prince-udl"
+      ],
+      "papers": [
+        "vae"
+      ],
+      "hash": "ad82bdcd0370"
+    },
+    {
+      "id": "13",
+      "order": 17,
+      "phase": 1,
+      "lecture": "Prince ch. 18: diffusion",
+      "reading": "DDPM 2020; CLIP 2021",
+      "exercise": "Follow the DDPM loss derivation (reading); derive the contrastive objective; DDPM notebook optional",
+      "hours": 6,
+      "depth": "lecture",
+      "resources": [
+        "prince-udl"
+      ],
+      "papers": [
+        "ddpm",
+        "clip"
+      ],
+      "hash": "e74aa11e2c92"
+    },
+    {
+      "id": "14",
+      "order": 18,
+      "phase": 1,
+      "lecture": "Sutton and Barto ch. 1–4; Prince ch. 19",
+      "reading": "",
+      "exercise": "MDP, Bellman equations; policy iteration on a toy MDP by hand",
+      "hours": 6,
+      "depth": "derived",
+      "resources": [
+        "prince-udl",
+        "sutton-barto"
+      ],
+      "papers": [],
+      "hash": "f977914a748f"
+    },
+    {
+      "id": "15",
+      "order": 19,
+      "phase": 1,
+      "lecture": "Sutton and Barto ch. 13; Spinning Up policy-gradient pages",
+      "reading": "PPO 2017",
+      "exercise": "Policy gradient theorem; baseline variance-reduction argument; map Spinning Up's PPO code to the equations",
+      "hours": 6,
+      "depth": "derived",
+      "resources": [
+        "sutton-barto",
+        "spinning-up"
+      ],
+      "papers": [
+        "ppo"
+      ],
+      "hash": "96b689f9d7d8"
+    },
+    {
+      "id": "16",
+      "order": 20,
+      "phase": 1,
+      "lecture": "Prince ch. 20: why does deep learning work?",
+      "reading": "Kaplan 2020; Chinchilla 2022",
+      "exercise": "Paper notes; what the power-law fit assumes and where it fails",
+      "hours": 6,
+      "depth": "derived",
+      "resources": [
+        "prince-udl"
+      ],
+      "papers": [
+        "scaling-laws",
+        "chinchilla"
+      ],
+      "hash": "c6ac544f1c88"
+    },
+    {
+      "id": "17",
+      "order": 21,
+      "phase": 1,
+      "lecture": "Gate 1",
+      "reading": "Catch-up",
+      "exercise": "Closed-book: backprop through a transformer block; the ELBO; policy gradient with baseline. Competency rows 2–6 set",
+      "hours": 6,
+      "gate": "Gate 1",
+      "depth": "derived",
+      "resources": [],
+      "papers": [],
+      "hash": "d0ee4b1923ee"
+    },
+    {
+      "id": "18",
+      "order": 22,
+      "phase": 2,
+      "lecture": "CS336: tokenization; architectures and hyperparameters",
+      "reading": "RoPE 2021",
+      "exercise": "BPE merges by hand (Karpathy's tokenization video as the guide); parameter count and per-token FLOPs of nanochat's model, checked against the code",
+      "hours": 6,
+      "depth": "lecture",
+      "resources": [
+        "cs336",
+        "nanochat",
+        "karpathy-tokenization"
+      ],
+      "papers": [
+        "rope"
+      ],
+      "hash": "7559d06b82c9"
+    },
+    {
+      "id": "19",
+      "order": 23,
+      "phase": 2,
+      "lecture": "CS336: attention alternatives",
+      "reading": "Mamba 2023 §1–3; LLaMA 1–3 reports, architecture and training sections",
+      "exercise": "KV-cache size vs GQA groups and context; reconstruct LLaMA-3 8B training FLOPs and GPU-hours",
+      "hours": 6,
+      "depth": "lecture",
+      "resources": [
+        "cs336"
+      ],
+      "papers": [
+        "mamba",
+        "llama-1-3-reports"
+      ],
+      "hash": "ca617c8ca07e"
+    },
+    {
+      "id": "20",
+      "order": 24,
+      "phase": 2,
+      "lecture": "CS336: GPUs; parallelism (overview)",
+      "reading": "Ultra-Scale Playbook, parallelism chapter and collectives appendix (read only)",
+      "exercise": "Memory per GPU under data, tensor, and pipeline parallelism for a 7B model",
+      "hours": 6,
+      "depth": "lecture",
+      "resources": [
+        "cs336",
+        "ultra-scale-playbook"
+      ],
+      "papers": [],
+      "hash": "686330a0c5e0"
+    },
+    {
+      "id": "21",
+      "order": 25,
+      "phase": 2,
+      "lecture": "",
+      "reading": "Scaling book, inference chapters; FlashAttention 2022",
+      "exercise": "HBM traffic of standard vs tiled attention; when bandwidth-bound and when compute-bound",
+      "hours": 6,
+      "depth": "lecture",
+      "resources": [
+        "scaling-book"
+      ],
+      "papers": [
+        "flashattention"
+      ],
+      "hash": "a2f8ff6b1607"
+    },
+    {
+      "id": "22",
+      "order": 26,
+      "phase": 2,
+      "lecture": "CS336: scaling laws",
+      "reading": "Sardana and Frankle 2023",
+      "exercise": "Fit an IsoFLOP frontier on supplied data; inference-aware optimum",
+      "hours": 6,
+      "depth": "derived",
+      "resources": [
+        "cs336"
+      ],
+      "papers": [
+        "sardana-and-frankle"
+      ],
+      "hash": "ea9415b36bfa"
+    },
+    {
+      "id": "23",
+      "order": 27,
+      "phase": 2,
+      "lecture": "CS336: data; evaluation",
+      "reading": "FineWeb and DCLM reports; HELM 2022; HF LLM Evaluation Guidebook; lm-evaluation-harness and Lighteval as the tools; one contamination study",
+      "exercise": "Which filtering claims have controlled ablations; benchmark critique, first draft",
+      "hours": 6,
+      "depth": "lecture",
+      "resources": [
+        "cs336",
+        "hf-eval-guidebook",
+        "lm-eval-harness",
+        "lighteval"
+      ],
+      "papers": [
+        "fineweb-report",
+        "dclm-report",
+        "helm"
+      ],
+      "hash": "40f36b5ae3fd"
+    },
+    {
+      "id": "24",
+      "order": 28,
+      "phase": 2,
+      "lecture": "",
+      "reading": "Switch Transformer 2021; DeepSeek-V3 report (MLA, MoE)",
+      "exercise": "Active vs total parameters; load balancing without auxiliary loss",
+      "hours": 6,
+      "depth": "lecture",
+      "resources": [],
+      "papers": [
+        "switch-transformer",
+        "deepseek-v3-report"
+      ],
+      "hash": "e5ccb6587826"
+    },
+    {
+      "id": "25",
+      "order": 29,
+      "phase": 2,
+      "lecture": "",
+      "reading": "DeepSeek-V4 report",
+      "exercise": "Training budget reconstructed: reported, derived, unknown kept separate",
+      "hours": 6,
+      "depth": "derived",
+      "resources": [],
+      "papers": [
+        "deepseek-v4-report"
+      ],
+      "hash": "b613e99a497b"
+    },
+    {
+      "id": "26",
+      "order": 30,
+      "phase": 2,
+      "lecture": "CS336: inference",
+      "reading": "vLLM 2023; speculative decoding (Leviathan 2023); EAGLE-3 2025; HF Assisted Generation post; Databricks LLM inference best practices",
+      "exercise": "Speedup vs acceptance rate; tokens per second per dollar for one open model on one GPU, checked against a published benchmark",
+      "hours": 6,
+      "depth": "lecture",
+      "resources": [
+        "cs336",
+        "hf-assisted-generation",
+        "databricks-inference"
+      ],
+      "papers": [
+        "vllm",
+        "speculative-decoding-leviathan",
+        "eagle-3"
+      ],
+      "hash": "765354a8bcf5"
+    },
+    {
+      "id": "27",
+      "order": 31,
+      "phase": 2,
+      "lecture": "Gate 2",
+      "reading": "Catch-up; optional nanochat speedrun",
+      "exercise": "Closed-book: training-step memory and FLOPs under tensor and data parallelism; 7B on 64 GPUs budget. Competency rows 5 and 7 set",
+      "hours": 6,
+      "gate": "Gate 2",
+      "depth": "derived",
+      "resources": [
+        "nanochat"
+      ],
+      "papers": [],
+      "hash": "ee86c350d80c"
+    },
+    {
+      "id": "28",
+      "order": 32,
+      "phase": 3,
+      "lecture": "RLHF Book: definitions, problem setup, preference data, reward modeling",
+      "reading": "InstructGPT 2022; Labonne §3 Post-training datasets (chat templates, synthetic data, quality filtering); HF chat-templating docs",
+      "exercise": "KL-regularized objective from memory; Bradley-Terry likelihood and the reward-model loss; one paragraph on how a chat-template mismatch silently breaks a fine-tune",
+      "hours": 6,
+      "depth": "derived",
+      "resources": [
+        "rlhf-book",
+        "hf-chat-templating",
+        "llm-course"
+      ],
+      "papers": [
+        "instructgpt"
+      ],
+      "hash": "ed20aa868585"
+    },
+    {
+      "id": "29",
+      "order": 33,
+      "phase": 3,
+      "lecture": "RLHF Book: instruction tuning, rejection sampling, policy gradients (PPO, GRPO)",
+      "reading": "Labonne §4 SFT (LoRA, QLoRA, TRL, Unsloth, Axolotl); Raschka, LoRA insights",
+      "exercise": "PPO clipped objective and why it exists; LoRA parameter count and training memory for a 7B model at rank 16 versus full fine-tuning; run Labonne's Unsloth SFT Colab (guided, about 90 minutes) and read the TRL calls it makes",
+      "hours": 6,
+      "depth": "lecture",
+      "resources": [
+        "rlhf-book",
+        "llm-course",
+        "labonne-unsloth-sft",
+        "labonne-unsloth-colab",
+        "raschka-lora-insights"
+      ],
+      "papers": [],
+      "hash": "adbee0e69d37"
+    },
+    {
+      "id": "30",
+      "order": 34,
+      "phase": 3,
+      "lecture": "RLHF Book: direct alignment",
+      "reading": "DPO 2023; HF, Preference Tuning LLMs (DPO, IPO, KTO); the DPO W&B logs report",
+      "exercise": "Derive DPO from the KL-regularized optimum plus Bradley-Terry; state the coverage assumption; list the DPO metrics to watch and what each trend means. Labonne's DPO Colab optional",
+      "hours": 6,
+      "depth": "derived",
+      "resources": [
+        "rlhf-book",
+        "hf-pref-tuning",
+        "dpo-wandb-logs",
+        "llm-course",
+        "labonne-dpo",
+        "labonne-dpo-colab"
+      ],
+      "papers": [
+        "dpo"
+      ],
+      "hash": "68c6993595d1"
+    },
+    {
+      "id": "31",
+      "order": 35,
+      "phase": 3,
+      "lecture": "Practitioner stack: quantization, serving, merging",
+      "reading": "Labonne, Introduction to Weight Quantization (absmax, zero-point, LLM.int8); Labonne §7 Quantization (GGUF and llama.cpp; GPTQ, AWQ, SmoothQuant at lecture level); Labonne §Engineer 1 and 7 (APIs, Ollama and LM Studio, vLLM and TGI); Labonne, Merge LLMs with mergekit",
+      "exercise": "Memory of a 7B model at fp16, int8, int4 by hand; quantize a small model to GGUF (AutoQuant Colab or llama.cpp) and measure the perplexity change against bits; one page: the serving stack a team of yours would pick, and the cost per million tokens of each option",
+      "hours": 6,
+      "depth": "lecture",
+      "resources": [
+        "llm-course",
+        "labonne-quantization",
+        "labonne-gguf",
+        "labonne-autoquant",
+        "labonne-gptq",
+        "awq-article",
+        "smoothquant-demo",
+        "llama-cpp",
+        "ollama",
+        "lm-studio",
+        "vllm-repo",
+        "tgi",
+        "labonne-mergekit"
+      ],
+      "papers": [],
+      "hash": "116cdc591a9e"
+    },
+    {
+      "id": "32",
+      "order": 36,
+      "phase": 3,
+      "lecture": "CS336: mid- and post-training; RLVR",
+      "reading": "Tülu 3 report; HF LLM Course ch. 12, Fine-tune with GRPO (optional run)",
+      "exercise": "What the RLVR stage changed, from the ablations",
+      "hours": 6,
+      "depth": "lecture",
+      "resources": [
+        "cs336",
+        "hf-llm-course-grpo"
+      ],
+      "papers": [
+        "tulu-3-report"
+      ],
+      "hash": "df54e3043f3d"
+    },
+    {
+      "id": "33",
+      "order": 37,
+      "phase": 3,
+      "lecture": "Raschka ch. 1–3 and inference-time scaling",
+      "reading": "s1 2025; self-consistency 2022; HF, Scaling test-time compute (3B beating 70B on MATH-500)",
+      "exercise": "Run the evaluation notebook; expected gain of best-of-n with a verifier as a function of n and verifier error; put the HF 3B-versus-70B claim through the six judgment questions, matched budgets first",
+      "hours": 6,
+      "depth": "lecture",
+      "resources": [
+        "raschka-reasoning",
+        "hf-test-time-compute"
+      ],
+      "papers": [
+        "s1",
+        "self-consistency"
+      ],
+      "hash": "13d6110b6e17"
+    },
+    {
+      "id": "34",
+      "order": 38,
+      "phase": 3,
+      "lecture": "Raschka: RLVR and GRPO chapters",
+      "reading": "DeepSeekMath 2024",
+      "exercise": "Run the GRPO notebook; derive the group-relative advantage estimator",
+      "hours": 6,
+      "depth": "derived",
+      "resources": [
+        "raschka-reasoning"
+      ],
+      "papers": [
+        "deepseekmath"
+      ],
+      "hash": "c3b310d9214e"
+    },
+    {
+      "id": "35",
+      "order": 39,
+      "phase": 3,
+      "lecture": "",
+      "reading": "DeepSeek-R1 2025; DAPO 2025; Dr. GRPO 2025; Yue et al. 2025",
+      "exercise": "One page on zero-variance groups and length bias; two-page RLVR-capability note",
+      "hours": 6,
+      "depth": "lecture",
+      "resources": [],
+      "papers": [
+        "deepseek-r1",
+        "dapo",
+        "dr-grpo",
+        "yue-et-al"
+      ],
+      "hash": "372ce82b57a2"
+    },
+    {
+      "id": "36",
+      "order": 40,
+      "phase": 3,
+      "lecture": "",
+      "reading": "Constitutional AI 2022; sycophancy and reward-hacking papers; one frontier system card to its methods; CLIP, Flamingo, LLaVA quick reads; Karvonen, Intuitive Explanation of SAEs (one hour, lecture level)",
+      "exercise": "System-card note",
+      "hours": 6,
+      "depth": "lecture",
+      "resources": [
+        "karvonen-saes"
+      ],
+      "papers": [
+        "clip",
+        "constitutional-ai",
+        "flamingo",
+        "llava"
+      ],
+      "hash": "818d9dbe9622"
+    },
+    {
+      "id": "37",
+      "order": 41,
+      "phase": 3,
+      "lecture": "Berkeley Agentic AI lectures 1–3 and evaluation lecture",
+      "reading": "ReAct 2022; Reflexion 2023; RAG 2020; Labonne §Engineer 2–5 (embedding models and MTEB, chunking, hybrid retrieval and reranking, Ragas metrics: context precision and recall, faithfulness; prompt engineering guide skimmed; structured outputs); Anthropic, Building Effective Agents; MCP spec (reread the primer's HTTP and JSON notes); A2A as a note",
+      "exercise": "Agent loop as a POMDP, one page; design the three-way comparison: task, untouched test set, metrics with retrieval and generation failure separated, abstention policy",
+      "hours": 6,
+      "depth": "lecture",
+      "resources": [
+        "berkeley-agentic",
+        "anthropic-agents",
+        "mcp-spec",
+        "a2a",
+        "llm-course",
+        "mteb",
+        "ragas-metrics",
+        "prompting-guide",
+        "outlines"
+      ],
+      "papers": [
+        "react",
+        "reflexion",
+        "rag"
+      ],
+      "hash": "cb50d0c71739"
+    },
+    {
+      "id": "38",
+      "order": 42,
+      "phase": 3,
+      "lecture": "Build and run week",
+      "reading": "Claude Agent SDK, OpenAI Agents SDK, or LangGraph docs as needed",
+      "exercise": "Assemble with an agent SDK or coding agent; audit splits, metrics, retries; run; Inspect eval; reliability memo with a falsifiable criterion",
+      "hours": 6,
+      "depth": "lecture",
+      "resources": [
+        "inspect",
+        "claude-agent-sdk",
+        "openai-agents-sdk",
+        "langgraph"
+      ],
+      "papers": [],
+      "hash": "a7994a3a359e"
+    },
+    {
+      "id": "39",
+      "order": 43,
+      "phase": 3,
+      "lecture": "Evaluation, safety, security",
+      "reading": "Judge-reliability literature; prompt injection and least privilege; OWASP LLM Top 10; Thacker, Prompt Injection Primer; Microsoft, Red teaming LLMs; garak as the tool; Agents' Last Exam 2026",
+      "exercise": "Benchmark critique, final; a page on agent-benchmark construct validity; a threat model for the week-38 agent against the OWASP Top 10",
+      "hours": 6,
+      "depth": "lecture",
+      "resources": [
+        "owasp-llm-top10",
+        "prompt-injection-primer",
+        "ms-red-teaming",
+        "garak"
+      ],
+      "papers": [
+        "agents-last-exam"
+      ],
+      "hash": "6980110bff60"
+    },
+    {
+      "id": "40",
+      "order": 44,
+      "phase": 3,
+      "lecture": "Gate 3 and oral exam",
+      "reading": "",
+      "exercise": "Closed-book: DPO; the GRPO estimator. One-hour adversarial oral. Competency rows 8–11 set",
+      "hours": 6,
+      "gate": "Gate 3",
+      "depth": "derived",
+      "resources": [],
+      "papers": [],
+      "hash": "611652fd2085"
+    },
+    {
+      "id": "41",
+      "order": 45,
+      "phase": "C",
+      "lecture": "Question and falsifier; protocol",
+      "reading": "",
+      "exercise": "Unit of analysis, splits, metric, baseline, stopping rule, budget (under $300 or none)",
+      "hours": 6,
+      "depth": "lecture",
+      "resources": [],
+      "papers": [],
+      "hash": "ae2836b618ee"
+    },
+    {
+      "id": "42",
+      "order": 46,
+      "phase": "C",
+      "lecture": "Agent runs baseline and experiment",
+      "reading": "",
+      "exercise": "Audit raw outputs; hand-check metric calculations",
+      "hours": 6,
+      "depth": "lecture",
+      "resources": [],
+      "papers": [],
+      "hash": "fabdd5465da7"
+    },
+    {
+      "id": "43",
+      "order": 47,
+      "phase": "C",
+      "lecture": "Write-up, four to six pages",
+      "reading": "",
+      "exercise": "Results with uncertainty; alternative explanations; failed tests",
+      "hours": 6,
+      "depth": "lecture",
+      "resources": [],
+      "papers": [],
+      "hash": "6b31892ac549"
+    },
+    {
+      "id": "44",
+      "order": 48,
+      "phase": "C",
+      "lecture": "Oral defence",
+      "reading": "",
+      "exercise": "One hour, adversarial; delayed retest of three derivations; competency ledger finalized; one page on what to study next",
+      "hours": 6,
+      "depth": "lecture",
+      "resources": [],
+      "papers": [],
+      "hash": "50c2a1043b41"
+    }
+  ],
+  "checkpoints": [
+    {
+      "id": "cp-0-1",
+      "phase": 0,
+      "text": "micrograd with gradient check"
+    },
+    {
+      "id": "cp-0-2",
+      "phase": 0,
+      "text": "Backprop-as-reverse-mode-AD derivation, one page"
+    },
+    {
+      "id": "cp-0-3",
+      "phase": 0,
+      "text": "nanochat training script annotated"
+    },
+    {
+      "id": "cp-1-1",
+      "phase": 1,
+      "text": "Toy GPT coded along, trained on a small corpus"
+    },
+    {
+      "id": "cp-1-2",
+      "phase": 1,
+      "text": "Three closed-book derivations"
+    },
+    {
+      "id": "cp-1-3",
+      "phase": 1,
+      "text": "ResNet notebook run with a one-page analysis"
+    },
+    {
+      "id": "cp-1-4",
+      "phase": 1,
+      "text": "Fifteen paper notes"
+    },
+    {
+      "id": "cp-2-1",
+      "phase": 2,
+      "text": "nanochat model and tokenizer files annotated"
+    },
+    {
+      "id": "cp-2-2",
+      "phase": 2,
+      "text": "Technical-report audit of DeepSeek-V4 with reported, derived, and unknown separated"
+    },
+    {
+      "id": "cp-2-3",
+      "phase": 2,
+      "text": "Training-step cost derivation, closed-book"
+    },
+    {
+      "id": "cp-2-4",
+      "phase": 2,
+      "text": "Benchmark critique"
+    },
+    {
+      "id": "cp-3-1",
+      "phase": 3,
+      "text": "Two closed-book derivations: DPO, GRPO estimator"
+    },
+    {
+      "id": "cp-3-2",
+      "phase": 3,
+      "text": "Practitioner artifacts: Unsloth SFT run and GGUF quantization run, each with a half-page of what changed and what it cost; LoRA and quantization memory arithmetic by hand"
+    },
+    {
+      "id": "cp-3-3",
+      "phase": 3,
+      "text": "GRPO notebook run with a write-up of the reward curve and pass@k"
+    },
+    {
+      "id": "cp-3-4",
+      "phase": 3,
+      "text": "Three-way agent comparison with Inspect eval, reliability memo, and OWASP threat model"
+    },
+    {
+      "id": "cp-3-5",
+      "phase": 3,
+      "text": "RLVR-capability note and system-card note"
+    },
+    {
+      "id": "cp-c-1",
+      "phase": "C",
+      "text": "Protocol and write-up"
+    },
+    {
+      "id": "cp-c-2",
+      "phase": "C",
+      "text": "Audit log of the agent's runs"
+    },
+    {
+      "id": "cp-c-3",
+      "phase": "C",
+      "text": "Oral defence completed; retest results recorded"
+    }
+  ],
+  "derivations": [
+    {
+      "id": "der-1-backprop-through-a-transformer",
+      "title": "Backprop through a transformer block",
+      "phase": 1,
+      "weekDue": "17"
+    },
+    {
+      "id": "der-2-the-elbo",
+      "title": "The ELBO",
+      "phase": 1,
+      "weekDue": "17"
+    },
+    {
+      "id": "der-3-the-policy-gradient-with",
+      "title": "The policy gradient with baseline",
+      "phase": 1,
+      "weekDue": "17"
+    },
+    {
+      "id": "der-4-training-step-memory-and",
+      "title": "Training-step memory and FLOPs under tensor and data parallelism",
+      "phase": 2,
+      "weekDue": "27"
+    },
+    {
+      "id": "der-5-dpo-from-the-kl",
+      "title": "DPO from the KL-regularized optimum plus Bradley-Terry",
+      "phase": 3,
+      "weekDue": "40"
+    },
+    {
+      "id": "der-6-the-grpo-estimator-and",
+      "title": "The GRPO estimator and its failure cases",
+      "phase": 3,
+      "weekDue": "40"
+    }
+  ],
+  "competencies": [
+    {
+      "id": "comp-1",
+      "name": "Prerequisites: probability, optimization, numerics (diagnostic)",
+      "phaseSet": 0,
+      "target": 2
+    },
+    {
+      "id": "comp-2",
+      "name": "Reverse-mode AD; reading training code",
+      "phaseSet": 1,
+      "target": 2
+    },
+    {
+      "id": "comp-3",
+      "name": "Generalization, regularization, and what deep nets do to the classical story",
+      "phaseSet": 1,
+      "target": 2
+    },
+    {
+      "id": "comp-4",
+      "name": "Deep-network optimization and representations",
+      "phaseSet": 1,
+      "target": 2
+    },
+    {
+      "id": "comp-5",
+      "name": "Attention, transformers, pretraining and data",
+      "phaseSet": 1,
+      "target": 2
+    },
+    {
+      "id": "comp-6",
+      "name": "Generative and multimodal objectives and limits",
+      "phaseSet": 1,
+      "target": 1
+    },
+    {
+      "id": "comp-7",
+      "name": "Compute, memory, scaling, inference economics",
+      "phaseSet": 2,
+      "target": 2
+    },
+    {
+      "id": "comp-8",
+      "name": "MDPs, policy gradients, RL estimators",
+      "phaseSet": 3,
+      "target": 2
+    },
+    {
+      "id": "comp-9",
+      "name": "Post-training objectives and reward design",
+      "phaseSet": 3,
+      "target": 2
+    },
+    {
+      "id": "comp-10",
+      "name": "Reasoning, test-time compute, capability evaluation",
+      "phaseSet": 3,
+      "target": 2
+    },
+    {
+      "id": "comp-11",
+      "name": "Retrieval, agents, evaluation, safety",
+      "phaseSet": 3,
+      "target": 2
+    },
+    {
+      "id": "comp-12",
+      "name": "Paper critique and reproducibility audit",
+      "phaseSet": "C",
+      "target": 2
+    }
+  ],
+  "papers": [
+    {
+      "id": "kapoor-and-narayanan",
+      "title": "Kapoor and Narayanan",
+      "year": 2023,
+      "weeks": [
+        "4"
+      ],
+      "url": "https://arxiv.org/search/?query=Kapoor%20and%20Narayanan&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "zheng-et-al",
+      "title": "Zheng et al.",
+      "year": 2023,
+      "weeks": [
+        "4"
+      ],
+      "url": "https://arxiv.org/search/?query=Zheng%20et%20al.&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "adam",
+      "title": "Adam",
+      "year": 2014,
+      "weeks": [
+        "6"
+      ],
+      "url": "https://arxiv.org/search/?query=Adam&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "deep-double-descent",
+      "title": "Deep Double Descent (Nakkiran)",
+      "year": 2019,
+      "weeks": [
+        "7"
+      ],
+      "url": "https://arxiv.org/search/?query=Deep%20Double%20Descent&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "grokking",
+      "title": "Grokking (Power)",
+      "year": 2022,
+      "weeks": [
+        "7"
+      ],
+      "url": "https://arxiv.org/search/?query=Grokking&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "dropout",
+      "title": "Dropout",
+      "year": 2014,
+      "weeks": [
+        "7"
+      ],
+      "url": "https://arxiv.org/search/?query=Dropout&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "resnet",
+      "title": "ResNet",
+      "year": 2015,
+      "weeks": [
+        "8"
+      ],
+      "url": "https://arxiv.org/search/?query=ResNet&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "batch-normalization",
+      "title": "Batch Normalization",
+      "year": 2015,
+      "weeks": [
+        "8"
+      ],
+      "url": "https://arxiv.org/search/?query=Batch%20Normalization&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "attention-is-all-you-need",
+      "title": "Attention Is All You Need",
+      "year": 2017,
+      "weeks": [
+        "9"
+      ],
+      "url": "https://arxiv.org/search/?query=Attention%20Is%20All%20You%20Need&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "layer-normalization",
+      "title": "Layer Normalization",
+      "year": 2016,
+      "weeks": [
+        "9"
+      ],
+      "url": "https://arxiv.org/search/?query=Layer%20Normalization&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "gpt-2",
+      "title": "GPT-2",
+      "year": 2019,
+      "weeks": [
+        "11"
+      ],
+      "url": "https://arxiv.org/search/?query=GPT-2&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "bert",
+      "title": "BERT",
+      "year": 2018,
+      "weeks": [
+        "11"
+      ],
+      "url": "https://arxiv.org/search/?query=BERT&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "vit",
+      "title": "ViT",
+      "year": 2020,
+      "weeks": [
+        "11"
+      ],
+      "url": "https://arxiv.org/search/?query=ViT&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "vae",
+      "title": "VAE (Kingma and Welling)",
+      "year": 2013,
+      "weeks": [
+        "12"
+      ],
+      "url": "https://arxiv.org/search/?query=VAE&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "ddpm",
+      "title": "DDPM",
+      "year": 2020,
+      "weeks": [
+        "13"
+      ],
+      "url": "https://arxiv.org/search/?query=DDPM&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "clip",
+      "title": "CLIP",
+      "year": 2021,
+      "weeks": [
+        "13",
+        "36"
+      ],
+      "url": "https://openai.com/research/clip",
+      "urlStatus": "source"
+    },
+    {
+      "id": "ppo",
+      "title": "PPO",
+      "year": 2017,
+      "weeks": [
+        "15"
+      ],
+      "url": "https://arxiv.org/abs/1707.06347",
+      "urlStatus": "source"
+    },
+    {
+      "id": "scaling-laws",
+      "title": "Scaling Laws (Kaplan)",
+      "year": 2020,
+      "weeks": [
+        "16"
+      ],
+      "url": "https://arxiv.org/search/?query=Scaling%20Laws&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "chinchilla",
+      "title": "Chinchilla",
+      "year": 2022,
+      "weeks": [
+        "16"
+      ],
+      "url": "https://arxiv.org/search/?query=Chinchilla&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "rope",
+      "title": "RoPE",
+      "year": 2021,
+      "weeks": [
+        "18"
+      ],
+      "url": "https://arxiv.org/search/?query=RoPE&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "mamba",
+      "title": "Mamba",
+      "year": 2023,
+      "weeks": [
+        "19"
+      ],
+      "url": "https://arxiv.org/search/?query=Mamba&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "llama-1-3-reports",
+      "title": "LLaMA 1–3 reports",
+      "weeks": [
+        "19"
+      ],
+      "url": "https://arxiv.org/search/?query=LLaMA%201%E2%80%933%20reports&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "flashattention",
+      "title": "FlashAttention",
+      "year": 2022,
+      "weeks": [
+        "21"
+      ],
+      "url": "https://arxiv.org/search/?query=FlashAttention&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "sardana-and-frankle",
+      "title": "Sardana and Frankle",
+      "year": 2023,
+      "weeks": [
+        "22"
+      ],
+      "url": "https://arxiv.org/search/?query=Sardana%20and%20Frankle&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "fineweb-report",
+      "title": "FineWeb report",
+      "weeks": [
+        "23"
+      ],
+      "url": "https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1",
+      "urlStatus": "source"
+    },
+    {
+      "id": "dclm-report",
+      "title": "DCLM report",
+      "weeks": [
+        "23"
+      ],
+      "url": "https://arxiv.org/search/?query=DCLM%20report&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "helm",
+      "title": "HELM",
+      "year": 2022,
+      "weeks": [
+        "23"
+      ],
+      "url": "https://arxiv.org/search/?query=HELM&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "switch-transformer",
+      "title": "Switch Transformer",
+      "year": 2021,
+      "weeks": [
+        "24"
+      ],
+      "url": "https://arxiv.org/search/?query=Switch%20Transformer&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "deepseek-v3-report",
+      "title": "DeepSeek-V3 report",
+      "weeks": [
+        "24"
+      ],
+      "url": "https://arxiv.org/search/?query=DeepSeek-V3%20report&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "deepseek-v4-report",
+      "title": "DeepSeek-V4 report",
+      "weeks": [
+        "25"
+      ],
+      "url": "https://arxiv.org/search/?query=DeepSeek-V4%20report&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "vllm",
+      "title": "vLLM",
+      "year": 2023,
+      "weeks": [
+        "26"
+      ],
+      "url": "https://arxiv.org/search/?query=vLLM&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "speculative-decoding-leviathan",
+      "title": "Speculative decoding (Leviathan)",
+      "year": 2023,
+      "weeks": [
+        "26"
+      ],
+      "url": "https://arxiv.org/search/?query=Speculative%20decoding%20(Leviathan)&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "eagle-3",
+      "title": "EAGLE-3",
+      "year": 2025,
+      "weeks": [
+        "26"
+      ],
+      "url": "https://arxiv.org/abs/2503.01840",
+      "urlStatus": "source"
+    },
+    {
+      "id": "instructgpt",
+      "title": "InstructGPT",
+      "year": 2022,
+      "weeks": [
+        "28"
+      ],
+      "url": "https://arxiv.org/search/?query=InstructGPT&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "dpo",
+      "title": "DPO",
+      "year": 2023,
+      "weeks": [
+        "30"
+      ],
+      "url": "https://arxiv.org/abs/2305.18290",
+      "urlStatus": "source"
+    },
+    {
+      "id": "tulu-3-report",
+      "title": "Tülu 3 report",
+      "weeks": [
+        "32"
+      ],
+      "url": "https://arxiv.org/search/?query=T%C3%BClu%203%20report&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "s1",
+      "title": "s1",
+      "year": 2025,
+      "weeks": [
+        "33"
+      ],
+      "url": "https://arxiv.org/search/?query=s1&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "self-consistency",
+      "title": "self-consistency",
+      "year": 2022,
+      "weeks": [
+        "33"
+      ],
+      "url": "https://arxiv.org/search/?query=self-consistency&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "deepseekmath",
+      "title": "DeepSeekMath",
+      "year": 2024,
+      "weeks": [
+        "34"
+      ],
+      "url": "https://arxiv.org/abs/2402.03300",
+      "urlStatus": "source"
+    },
+    {
+      "id": "deepseek-r1",
+      "title": "DeepSeek-R1",
+      "year": 2025,
+      "weeks": [
+        "35"
+      ],
+      "url": "https://arxiv.org/search/?query=DeepSeek-R1&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "dapo",
+      "title": "DAPO",
+      "year": 2025,
+      "weeks": [
+        "35"
+      ],
+      "url": "https://arxiv.org/search/?query=DAPO&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "dr-grpo",
+      "title": "Dr. GRPO",
+      "year": 2025,
+      "weeks": [
+        "35"
+      ],
+      "url": "https://arxiv.org/search/?query=Dr.%20GRPO&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "yue-et-al",
+      "title": "Yue et al.",
+      "year": 2025,
+      "weeks": [
+        "35"
+      ],
+      "url": "https://arxiv.org/search/?query=Yue%20et%20al.&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "constitutional-ai",
+      "title": "Constitutional AI",
+      "year": 2022,
+      "weeks": [
+        "36"
+      ],
+      "url": "https://arxiv.org/search/?query=Constitutional%20AI&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "flamingo",
+      "title": "Flamingo",
+      "weeks": [
+        "36"
+      ],
+      "url": "https://arxiv.org/search/?query=Flamingo&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "llava",
+      "title": "LLaVA",
+      "weeks": [
+        "36"
+      ],
+      "url": "https://llava-vl.github.io/",
+      "urlStatus": "source"
+    },
+    {
+      "id": "react",
+      "title": "ReAct",
+      "year": 2022,
+      "weeks": [
+        "37"
+      ],
+      "url": "https://arxiv.org/search/?query=ReAct&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "reflexion",
+      "title": "Reflexion",
+      "year": 2023,
+      "weeks": [
+        "37"
+      ],
+      "url": "https://arxiv.org/search/?query=Reflexion&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "rag",
+      "title": "RAG",
+      "year": 2020,
+      "weeks": [
+        "37"
+      ],
+      "url": "https://arxiv.org/search/?query=RAG&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "agents-last-exam",
+      "title": "Agents' Last Exam",
+      "year": 2026,
+      "weeks": [
+        "39"
+      ],
+      "url": "https://arxiv.org/search/?query=Agents'%20Last%20Exam&searchtype=title",
+      "urlStatus": "unverified"
+    },
+    {
+      "id": "alexnet",
+      "title": "AlexNet",
+      "weeks": [
+        "8"
+      ],
+      "url": "https://arxiv.org/search/?query=AlexNet&searchtype=title",
+      "urlStatus": "unverified"
+    }
+  ],
+  "resources": [
+    {
+      "id": "cs50p",
+      "name": "CS50P (Harvard, Introduction to Programming with Python)",
+      "kind": "course",
+      "url": "https://cs50.harvard.edu/python/",
+      "source": "curriculum"
+    },
+    {
+      "id": "think-python",
+      "name": "Think Python",
+      "kind": "book"
+    },
+    {
+      "id": "numpy-quickstart",
+      "name": "NumPy quickstart",
+      "kind": "tool"
+    },
+    {
+      "id": "from-python-to-numpy",
+      "name": "From Python to NumPy (Rougier)",
+      "kind": "book",
+      "url": "https://www.labri.fr/perso/nrougier/from-python-to-numpy/",
+      "source": "curriculum"
+    },
+    {
+      "id": "csapp",
+      "name": "CS:APP (Computer Systems: A Programmer's Perspective)",
+      "kind": "book"
+    },
+    {
+      "id": "goldberg-1991",
+      "name": "Goldberg 1991, What Every Computer Scientist Should Know About Floating-Point Arithmetic",
+      "kind": "paper"
+    },
+    {
+      "id": "gpu-mode",
+      "name": "GPU MODE lectures",
+      "kind": "lectures",
+      "url": "https://github.com/gpu-mode/lectures",
+      "source": "lesson-plan"
+    },
+    {
+      "id": "roughgarden",
+      "name": "Algorithms Illuminated (Roughgarden), Part 1",
+      "kind": "book"
+    },
+    {
+      "id": "missing-semester",
+      "name": "The Missing Semester of Your CS Education",
+      "kind": "course",
+      "url": "https://missing.csail.mit.edu/",
+      "source": "curriculum"
+    },
+    {
+      "id": "mdn-http",
+      "name": "MDN, An overview of HTTP",
+      "kind": "tool"
+    },
+    {
+      "id": "mackay",
+      "name": "MacKay, Information Theory, Inference, and Learning Algorithms",
+      "kind": "book",
+      "url": "http://www.inference.org.uk/mackay/itila/",
+      "source": "curriculum"
+    },
+    {
+      "id": "karpathy-zero-to-hero",
+      "name": "Karpathy, Neural Networks: Zero to Hero (micrograd, makemore, GPT)",
+      "kind": "lectures",
+      "url": "https://karpathy.ai/zero-to-hero.html",
+      "source": "curriculum"
+    },
+    {
+      "id": "pytorch-blitz",
+      "name": "PyTorch 60-minute blitz",
+      "kind": "tool"
+    },
+    {
+      "id": "cs336",
+      "name": "Stanford CS336, Language Modeling from Scratch",
+      "kind": "course",
+      "url": "https://stanford-cs336.github.io/",
+      "source": "curriculum"
+    },
+    {
+      "id": "nanochat",
+      "name": "nanochat (Karpathy)",
+      "kind": "repo",
+      "url": "https://github.com/karpathy/nanochat",
+      "source": "curriculum"
+    },
+    {
+      "id": "scaling-book",
+      "name": "How to Scale Your Model (the scaling book)",
+      "kind": "book",
+      "url": "https://jax-ml.github.io/scaling-book",
+      "source": "curriculum"
+    },
+    {
+      "id": "ultra-scale-playbook",
+      "name": "Ultra-Scale Playbook (Hugging Face nanotron)",
+      "kind": "book",
+      "url": "https://huggingface.co/spaces/nanotron/ultrascale-playbook",
+      "source": "curriculum"
+    },
+    {
+      "id": "prince-udl",
+      "name": "Prince, Understanding Deep Learning",
+      "kind": "book",
+      "url": "https://udlbook.github.io/udlbook/",
+      "source": "curriculum"
+    },
+    {
+      "id": "sutton-barto",
+      "name": "Sutton and Barto, Reinforcement Learning: An Introduction",
+      "kind": "book",
+      "url": "http://incompleteideas.net/book/the-book-2nd.html",
+      "source": "lesson-plan"
+    },
+    {
+      "id": "spinning-up",
+      "name": "OpenAI Spinning Up in Deep RL",
+      "kind": "course",
+      "url": "https://spinningup.openai.com",
+      "source": "lesson-plan"
+    },
+    {
+      "id": "rlhf-book",
+      "name": "Lambert, RLHF Book",
+      "kind": "book",
+      "url": "https://rlhfbook.com",
+      "source": "lesson-plan"
+    },
+    {
+      "id": "raschka-reasoning",
+      "name": "Raschka, Build a Reasoning Model (From Scratch)",
+      "kind": "book"
+    },
+    {
+      "id": "berkeley-agentic",
+      "name": "Berkeley Agentic AI (CS294, fall 2025)",
+      "kind": "course",
+      "url": "https://rdi.berkeley.edu/agentic-ai/f25",
+      "source": "curriculum"
+    },
+    {
+      "id": "inspect",
+      "name": "Inspect (UK AISI evaluation framework)",
+      "kind": "tool",
+      "url": "https://inspect.aisi.org.uk/",
+      "source": "lesson-plan"
+    },
+    {
+      "id": "anthropic-agents",
+      "name": "Anthropic, Building Effective Agents",
+      "kind": "tool"
+    },
+    {
+      "id": "hf-chat-templating",
+      "name": "Hugging Face chat templating docs",
+      "kind": "tool",
+      "url": "https://huggingface.co/docs/transformers/main/en/chat_templating",
+      "source": "llm-course"
+    },
+    {
+      "id": "hf-llm-course-grpo",
+      "name": "Hugging Face LLM Course ch. 12, Fine-tune with GRPO",
+      "kind": "course",
+      "url": "https://huggingface.co/learn/llm-course/en/chapter12/5",
+      "source": "llm-course"
+    },
+    {
+      "id": "hf-pref-tuning",
+      "name": "Hugging Face, Preference Tuning LLMs (DPO, IPO, KTO)",
+      "kind": "tool",
+      "url": "https://huggingface.co/blog/pref-tuning",
+      "source": "llm-course"
+    },
+    {
+      "id": "dpo-wandb-logs",
+      "name": "DPO W&B logs report (TRL original DPO)",
+      "kind": "tool",
+      "url": "https://wandb.ai/alexander-vishnevskiy/dpo/reports/TRL-Original-DPO--Vmlldzo1NjI4MTc4",
+      "source": "llm-course"
+    },
+    {
+      "id": "hf-eval-guidebook",
+      "name": "Hugging Face LLM evaluation guidebook",
+      "kind": "book",
+      "url": "https://huggingface.co/spaces/OpenEvals/evaluation-guidebook",
+      "source": "llm-course"
+    },
+    {
+      "id": "lm-eval-harness",
+      "name": "lm-evaluation-harness (EleutherAI)",
+      "kind": "tool",
+      "url": "https://github.com/EleutherAI/lm-evaluation-harness",
+      "source": "llm-course"
+    },
+    {
+      "id": "lighteval",
+      "name": "Lighteval (Hugging Face)",
+      "kind": "tool",
+      "url": "https://github.com/huggingface/lighteval",
+      "source": "llm-course"
+    },
+    {
+      "id": "hf-assisted-generation",
+      "name": "Hugging Face, Assisted Generation",
+      "kind": "tool",
+      "url": "https://huggingface.co/blog/assisted-generation",
+      "source": "llm-course"
+    },
+    {
+      "id": "databricks-inference",
+      "name": "Databricks, LLM inference performance engineering: best practices",
+      "kind": "tool",
+      "url": "https://www.databricks.com/blog/llm-inference-performance-engineering-best-practices",
+      "source": "llm-course"
+    },
+    {
+      "id": "hf-test-time-compute",
+      "name": "Hugging Face, Scaling test-time compute",
+      "kind": "tool",
+      "url": "https://huggingface.co/spaces/HuggingFaceH4/blogpost-scaling-test-time-compute",
+      "source": "llm-course"
+    },
+    {
+      "id": "karvonen-saes",
+      "name": "Karvonen, An Intuitive Explanation of Sparse Autoencoders",
+      "kind": "tool",
+      "url": "https://adamkarvonen.github.io/machine_learning/2024/06/11/sae-intuitions.html",
+      "source": "llm-course"
+    },
+    {
+      "id": "owasp-llm-top10",
+      "name": "OWASP Top 10 for LLM Applications",
+      "kind": "tool",
+      "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/",
+      "source": "llm-course"
+    },
+    {
+      "id": "prompt-injection-primer",
+      "name": "Thacker, Prompt Injection Primer (PIPE)",
+      "kind": "tool",
+      "url": "https://github.com/jthack/PIPE",
+      "source": "llm-course"
+    },
+    {
+      "id": "ms-red-teaming",
+      "name": "Microsoft, Red teaming LLMs",
+      "kind": "tool",
+      "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/red-teaming",
+      "source": "llm-course"
+    },
+    {
+      "id": "garak",
+      "name": "garak (LLM vulnerability scanner)",
+      "kind": "tool",
+      "url": "https://github.com/leondz/garak/",
+      "source": "llm-course"
+    },
+    {
+      "id": "mcp-spec",
+      "name": "Model Context Protocol specification",
+      "kind": "tool",
+      "url": "https://modelcontextprotocol.io/",
+      "source": "llm-course"
+    },
+    {
+      "id": "a2a",
+      "name": "Agent2Agent protocol",
+      "kind": "tool",
+      "url": "https://a2a-protocol.org/",
+      "source": "llm-course"
+    },
+    {
+      "id": "claude-agent-sdk",
+      "name": "Claude Agent SDK",
+      "kind": "tool",
+      "url": "https://platform.claude.com/docs/en/agent-sdk/overview",
+      "source": "llm-course"
+    },
+    {
+      "id": "openai-agents-sdk",
+      "name": "OpenAI Agents SDK",
+      "kind": "tool",
+      "url": "https://openai.github.io/openai-agents-python/",
+      "source": "llm-course"
+    },
+    {
+      "id": "langgraph",
+      "name": "LangGraph",
+      "kind": "tool",
+      "url": "https://www.langchain.com/langgraph",
+      "source": "llm-course"
+    },
+    {
+      "id": "llm-course",
+      "name": "Labonne, LLM Course (your fork)",
+      "kind": "course",
+      "url": "https://github.com/EnchantedBroccoliForest/llm-course",
+      "source": "curriculum"
+    },
+    {
+      "id": "labonne-decoding",
+      "name": "Labonne, Decoding Strategies in LLMs",
+      "kind": "course",
+      "url": "https://mlabonne.github.io/blog/posts/2023-06-07-Decoding_strategies.html",
+      "source": "llm-course"
+    },
+    {
+      "id": "bycroft-llm-viz",
+      "name": "Bycroft, LLM Visualization",
+      "kind": "tool",
+      "url": "https://bbycroft.net/llm",
+      "source": "llm-course"
+    },
+    {
+      "id": "karpathy-tokenization",
+      "name": "Karpathy, Let's build the GPT Tokenizer (video)",
+      "kind": "lectures",
+      "url": "https://www.youtube.com/watch?v=zduSFxRajkE",
+      "source": "llm-course"
+    },
+    {
+      "id": "alammar-word2vec",
+      "name": "Alammar, The Illustrated Word2vec",
+      "kind": "course",
+      "url": "https://jalammar.github.io/illustrated-word2vec/",
+      "source": "llm-course"
+    },
+    {
+      "id": "colah-lstm",
+      "name": "colah, Understanding LSTM Networks",
+      "kind": "course",
+      "url": "https://colah.github.io/posts/2015-08-Understanding-LSTMs/",
+      "source": "llm-course"
+    },
+    {
+      "id": "labonne-unsloth-sft",
+      "name": "Labonne, Fine-tune Llama 3.1 Ultra-Efficiently with Unsloth (article)",
+      "kind": "course",
+      "url": "https://huggingface.co/blog/mlabonne/sft-llama3",
+      "source": "llm-course"
+    },
+    {
+      "id": "labonne-unsloth-colab",
+      "name": "Labonne, Fine-tune Llama 3.1 with Unsloth (Colab notebook)",
+      "kind": "course",
+      "url": "https://colab.research.google.com/drive/164cg_O7SV7G8kZr_JXqLd6VC7pd86-1Z?usp=sharing",
+      "source": "llm-course"
+    },
+    {
+      "id": "raschka-lora-insights",
+      "name": "Raschka, LoRA insights",
+      "kind": "course",
+      "url": "https://lightning.ai/pages/community/lora-insights/",
+      "source": "llm-course"
+    },
+    {
+      "id": "labonne-dpo",
+      "name": "Labonne, Fine-tune Mistral-7b with DPO (article)",
+      "kind": "course",
+      "url": "https://mlabonne.github.io/blog/posts/Fine_tune_Mistral_7b_with_DPO.html",
+      "source": "llm-course"
+    },
+    {
+      "id": "labonne-dpo-colab",
+      "name": "Labonne, Fine-tune Mistral-7b with DPO (Colab notebook)",
+      "kind": "course",
+      "url": "https://colab.research.google.com/drive/15iFBr1xWgztXvhrj5I9fBv20c7CFOPBE?usp=sharing",
+      "source": "llm-course"
+    },
+    {
+      "id": "labonne-quantization",
+      "name": "Labonne, Introduction to Weight Quantization",
+      "kind": "course",
+      "url": "https://mlabonne.github.io/blog/posts/Introduction_to_Weight_Quantization.html",
+      "source": "llm-course"
+    },
+    {
+      "id": "labonne-gguf",
+      "name": "Labonne, Quantize Llama models with llama.cpp (GGUF)",
+      "kind": "course",
+      "url": "https://mlabonne.github.io/blog/posts/Quantize_Llama_2_models_using_ggml.html",
+      "source": "llm-course"
+    },
+    {
+      "id": "labonne-autoquant",
+      "name": "Labonne, AutoQuant (Colab notebook)",
+      "kind": "course",
+      "url": "https://colab.research.google.com/drive/1b6nqC7UZVt8bx4MksX7s656GXPM-eWw4?usp=sharing",
+      "source": "llm-course"
+    },
+    {
+      "id": "labonne-gptq",
+      "name": "Labonne, 4-bit LLM Quantization with GPTQ",
+      "kind": "course",
+      "url": "https://mlabonne.github.io/blog/posts/4_bit_Quantization_with_GPTQ.html",
+      "source": "llm-course"
+    },
+    {
+      "id": "awq-article",
+      "name": "Understanding Activation-Aware Weight Quantization (AWQ)",
+      "kind": "course",
+      "url": "https://medium.com/friendliai/understanding-activation-aware-weight-quantization-awq-boosting-inference-serving-efficiency-in-10bb0faf63a8",
+      "source": "llm-course"
+    },
+    {
+      "id": "smoothquant-demo",
+      "name": "SmoothQuant on Llama 2 7B (notebook)",
+      "kind": "course",
+      "url": "https://github.com/mit-han-lab/smoothquant/blob/main/examples/smoothquant_llama_demo.ipynb",
+      "source": "llm-course"
+    },
+    {
+      "id": "llama-cpp",
+      "name": "llama.cpp",
+      "kind": "repo",
+      "url": "https://github.com/ggerganov/llama.cpp",
+      "source": "llm-course"
+    },
+    {
+      "id": "ollama",
+      "name": "Ollama",
+      "kind": "tool",
+      "url": "https://ollama.ai/",
+      "source": "llm-course"
+    },
+    {
+      "id": "lm-studio",
+      "name": "LM Studio",
+      "kind": "tool",
+      "url": "https://lmstudio.ai/",
+      "source": "llm-course"
+    },
+    {
+      "id": "vllm-repo",
+      "name": "vLLM (repository)",
+      "kind": "repo",
+      "url": "https://github.com/vllm-project/vllm/tree/main",
+      "source": "llm-course"
+    },
+    {
+      "id": "tgi",
+      "name": "Text Generation Inference (TGI)",
+      "kind": "repo",
+      "url": "https://github.com/huggingface/text-generation-inference",
+      "source": "llm-course"
+    },
+    {
+      "id": "labonne-mergekit",
+      "name": "Labonne, Merge LLMs with mergekit",
+      "kind": "course",
+      "url": "https://mlabonne.github.io/blog/posts/2024-01-08_Merge_LLMs_with_mergekit.html",
+      "source": "llm-course"
+    },
+    {
+      "id": "mteb",
+      "name": "MTEB Leaderboard",
+      "kind": "tool",
+      "url": "https://huggingface.co/spaces/mteb/leaderboard",
+      "source": "llm-course"
+    },
+    {
+      "id": "ragas-metrics",
+      "name": "Ragas, RAG pipeline metrics",
+      "kind": "tool",
+      "url": "https://docs.ragas.io/en/stable/concepts/metrics/index.html",
+      "source": "llm-course"
+    },
+    {
+      "id": "prompting-guide",
+      "name": "Prompt engineering guide",
+      "kind": "tool",
+      "url": "https://www.promptingguide.ai/",
+      "source": "llm-course"
+    },
+    {
+      "id": "outlines",
+      "name": "Outlines (structured outputs)",
+      "kind": "tool",
+      "url": "https://github.com/outlines-dev/outlines",
+      "source": "llm-course"
+    },
+    {
+      "id": "labonne-sec-llm-security",
+      "name": "LLM Security (llmsecurity.net)",
+      "kind": "tool",
+      "url": "https://llmsecurity.net/",
+      "source": "llm-course"
+    }
+  ],
+  "reviews": [
+    {
+      "date": "7 Nov 2026",
+      "change": "Incorporated the user's fork of Labonne's LLM Course: one new week (31, practitioner stack: quantization, serving, merging) and readings folded into weeks 9, 11, 18, 23, 26, 28–30, 32–33, 36–37, 39 (post-training datasets, LoRA/QLoRA, DPO variants, evaluation tooling, RAG components, LLM security). Phase 3 now weeks 28–40, capstone 41–44; 49 active weeks plus 3 buffer; checkpoint artifacts 19. A mapping table records what was taken, already covered, or skipped"
+    },
+    {
+      "date": "5 Nov 2026",
+      "change": "Condensed to one year at the user's request: 48 active weeks plus 4 buffer, about 290 hours. Cut the specialization and research investigation (replaced by a 4-week capstone), systems exercises, CS285, ARENA, generative-model breadth, referee calibration, replications; merged the primer from 8 weeks to 5. Derivations 8 → 6, checkpoint artifacts 18, competency targets set (level 2, with generative/multimodal at level 1). Two-year plan kept as archive tabs"
+    },
+    {
+      "date": "3 Nov 2026",
+      "change": "Two-year plan: CS primer added; external review's corrections folded in; rescaled to 5–7 hours/week; knowledge-first revision; created. Full log in the archive tab"
+    }
+  ],
+  "milestones": [
+    {
+      "name": "CS primer",
+      "weeks": "P1–P5",
+      "notes": "Gate P"
+    },
+    {
+      "name": "Phase 0: foundation",
+      "weeks": "1–4",
+      "notes": "Pace review at week 4"
+    },
+    {
+      "name": "Phase 1: deep learning core",
+      "weeks": "5–17",
+      "notes": "Gate 1"
+    },
+    {
+      "name": "Phase 2: language models and systems",
+      "weeks": "18–27",
+      "notes": "Gate 2"
+    },
+    {
+      "name": "Phase 3: post-training, practitioner stack, reasoning, agents",
+      "weeks": "28–40",
+      "notes": "Gate 3, oral"
+    },
+    {
+      "name": "Capstone",
+      "weeks": "41–44",
+      "notes": "Oral defence"
+    }
+  ]
+}
