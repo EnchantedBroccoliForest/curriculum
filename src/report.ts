@@ -19,12 +19,15 @@ export function buildReport(p: Progress): string {
   for (const week of [...byWeek.keys()].sort((a, b) => order(a) - order(b))) {
     const cs = byWeek.get(week)!;
     const logs = p.log.filter((l) => l.week === week && l.created > since);
-    const latest = logs[logs.length - 1];
     const wp = p.weeks[week];
+    const join = (key: "dates" | "done" | "unaided" | "stuck") => {
+      const parts = logs.map((l) => l[key].trim()).filter(Boolean);
+      return parts.length ? parts.join(" / ") : undefined;
+    };
     const lines: string[] = [];
     if (week !== "—") {
       lines.push(
-        `Week ${week}; dates: ${latest?.dates ?? "—"}; hours: ${latest ? logs.reduce((s, l) => s + l.hours, 0) : wp?.hours ?? 0}; done: ${latest?.done ?? (wp?.status === "done" ? "week marked done" : "—")}; unaided: ${latest?.unaided ?? "—"}; stuck: ${latest?.stuck ?? "—"}`,
+        `Week ${week}; dates: ${join("dates") ?? "—"}; hours: ${logs.length ? logs.reduce((s, l) => s + l.hours, 0) : wp?.hours ?? 0}; done: ${join("done") ?? (wp?.status === "done" ? "week marked done" : "—")}; unaided: ${join("unaided") ?? "—"}; stuck: ${join("stuck") ?? "—"}`,
       );
     } else {
       lines.push("Changes not tied to a week");

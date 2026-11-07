@@ -20,9 +20,10 @@ export function LogForm({ week, onSaved }: { week?: WeekId; onSaved?: () => void
           setMsg("Hours must be a non-negative number.");
           return;
         }
-        actions.addLog({ week: form.week, dates: form.dates, hours, done: form.done, unaided: form.unaided, stuck: form.stuck });
+        const target = week ?? form.week;
+        actions.addLog({ week: target, dates: form.dates, hours, done: form.done, unaided: form.unaided, stuck: form.stuck });
         setForm((f) => ({ ...f, dates: "", hours: "", done: "", unaided: "", stuck: "" }));
-        setMsg(`Saved. ${hours} h added to week ${form.week}.`);
+        setMsg(`Saved. ${hours} h added to week ${target}.`);
         onSaved?.();
       }}
     >

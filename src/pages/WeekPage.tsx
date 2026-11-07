@@ -104,7 +104,7 @@ export function WeekPage() {
 
           <section className="card p-4">
             <h2 className="font-semibold mb-3">Log entry for week {week.id}</h2>
-            <LogForm week={week.id} />
+            <LogForm key={week.id} week={week.id} />
           </section>
         </aside>
       </div>

@@ -91,6 +91,28 @@ ok("competency level persists after reload", lvl === "2", lvl);
 const retest = await page.goto(`${BASE}/competencies`).then(() => page.locator("tbody tr").nth(2).locator("td").last().textContent());
 ok("retest date auto-set on level change", /\d{4}-\d{2}-\d{2}/.test(retest || ""), retest?.trim());
 
+// 4b. Prev/next navigation keeps the log form on the current week (review finding).
+await page.goto(`${BASE}/week/P1`, { waitUntil: "networkidle" });
+await page.getByRole("link", { name: "Week P2 →" }).click();
+await page.waitForURL(/\/week\/P2$/);
+await page.fill("#week-P2-log-hours", "1");
+await page.getByRole("button", { name: "Save log entry" }).click();
+await page.waitForTimeout(200);
+const p2hours = await page.locator("#w-hours-P2").inputValue();
+const p1hours = await page.evaluate(() => JSON.parse(localStorage.getItem("ai-curriculum-progress:v1")).weeks["P1"]?.hours ?? 0);
+ok("log form follows prev/next navigation", p2hours === "1" && p1hours === 0, `P2=${p2hours} P1=${p1hours}`);
+
+// 4c. Pace review survives four zero-hour weeks (review finding).
+for (const wk of ["P3", "P4", "P5", "1"]) {
+  await page.goto(`${BASE}/week/${wk}`, { waitUntil: "networkidle" });
+  await page.fill(`#week-${wk}-log-hours`, "0");
+  await page.getByRole("button", { name: "Save log entry" }).click();
+  await page.waitForTimeout(100);
+}
+await page.goto(`${BASE}/reviews`, { waitUntil: "networkidle" });
+const paceText = await page.locator("main").textContent();
+ok("pace review handles zero-hour weeks without crashing", /zero hours|h\/week/.test(paceText || "") && (await page.locator("main h1").count()) === 1);
+
 // 5. Round trip: export → reset → import.
 const before = await page.evaluate(() => localStorage.getItem("ai-curriculum-progress:v1"));
 await page.goto(`${BASE}/settings`, { waitUntil: "networkidle" });
@@ -108,7 +130,7 @@ await page.goto(`${BASE}/`, { waitUntil: "networkidle" });
 await ctx.grantPermissions(["clipboard-read", "clipboard-write"]);
 await page.getByRole("button", { name: "Report to Claude" }).click();
 const report = await page.locator("pre[aria-label='Report text']").textContent();
-ok("report has the expected shape", /^Week 5; dates: .*; hours: .*; done: .*; unaided: .*; stuck: .*\nCompetency changes: .*\nDerivations: .*\nPapers: .*/m.test(report || ""), (report || "").split("\n")[0]);
+ok("report has the expected shape", /^Week [^;]+; dates: .*; hours: .*; done: .*; unaided: .*; stuck: .*\nCompetency changes: .*\nDerivations: .*\nPapers: .*/m.test(report || ""), (report || "").split("\n")[0]);
 
 // 7. Plan page at 375px: no horizontal overflow, controls usable.
 const mobile = await browser.newContext({ viewport: { width: 375, height: 800 }, deviceScaleFactor: 1 });

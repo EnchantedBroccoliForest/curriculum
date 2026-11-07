@@ -26,11 +26,13 @@ export function Reviews() {
         <h2 className="font-semibold mb-2">Pace review</h2>
         {last4.length < 4 ? (
           <p className="text-sm muted">Needs four logged weeks; {last4.length} so far.</p>
+        ) : factor === null ? (
+          <p className="text-sm muted">The last four logged weeks total zero hours, so no pace can be measured.</p>
         ) : (
           <>
             <p className="text-sm mb-2">
               Mean over the last 4 logged weeks ({last4.join(", ")}): <strong>{mean.toFixed(1)} h/week</strong> against a target of {target}. At that pace a planned week takes{" "}
-              {factor!.toFixed(2)} calendar weeks.
+              {factor.toFixed(2)} calendar weeks.
             </p>
             <table className="data">
               <thead>
@@ -44,7 +46,7 @@ export function Reviews() {
               <tbody>
                 {curriculum.phases.map((ph) => {
                   const n = weekNumber(ph.weeks[1]);
-                  const cal = n * factor!;
+                  const cal = n * factor;
                   return (
                     <tr key={String(ph.id)}>
                       <td>{ph.name}</td>
